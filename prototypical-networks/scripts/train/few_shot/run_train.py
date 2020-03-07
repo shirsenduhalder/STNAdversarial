@@ -8,12 +8,13 @@ parser = argparse.ArgumentParser(description='Train prototypical networks')
 default_dataset = 'omniglot'
 parser.add_argument('--data.dataset', type=str, default=default_dataset, metavar='DS',
                     help="data set name (default: {:s})".format(default_dataset))
+
 default_split = 'vinyals'
 parser.add_argument('--data.split', type=str, default=default_split, metavar='SP',
                     help="split name (default: {:s})".format(default_split))
 parser.add_argument('--data.way', type=int, default=60, metavar='WAY',
                     help="number of classes per episode (default: 60)")
-parser.add_argument('--data.shot', type=int, default=5, metavar='SHOT',
+parser.add_argument('--data.shot', type=int, default=1, metavar='SHOT',
                     help="number of support examples per class (default: 5)")
 parser.add_argument('--data.query', type=int, default=5, metavar='QUERY',
                     help="number of query examples per class (default: 5)")
@@ -45,6 +46,7 @@ parser.add_argument('--model.stn_loss', type=str, default='identitydistance',
                     help='Get theta loss' )
 parser.add_argument('--model.stn_dropout', type=float, default=0.5,
                     help='Dropout for STN (default: 0.5)' )
+
 # stn args
 default_weight_decay = 0.0
 default_stn_name = 'stnv0'
@@ -57,7 +59,8 @@ parser.add_argument('--train.stn_learning_rate', type=float, default=0.001, meta
                     help='learning rate (default: 0.0001)')
 parser.add_argument('--train.stn_optim_method', type=str, default='Adam', metavar='STNOPTIM',
                     help='optimization method (default: Adam)')
-
+parser.add_argument('--train.stn_reg_coeff', default=1, type=float, help='Coefficient for regularizer on theta')
+parser.add_argument('--train.stn_kl_div_coeff', default=0.01, type=float, help='Coefficient for KL divergence')
 # train args
 parser.add_argument('--train.epochs', type=int, default=10000, metavar='NEPOCHS',
                     help='number of epochs to train (default: 10000)')

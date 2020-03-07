@@ -8,3 +8,10 @@ prototypical-networks/data/*/data
 *.zip
 tags
 __pycache__
+prototypical-networks/data/miniImagenet/
+fewshot/data/
+logs/
+fewshot/models/
+fewshot/loss.png
+fewshot/models/
+fewshot/miniimagenet.sh
